@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserTestMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.UserTest">
+    <id column="User_Id" jdbcType="VARCHAR" property="userId" />
+    <result column="User_Name" jdbcType="VARCHAR" property="userName" />
+    <result column="Open_ID" jdbcType="VARCHAR" property="openId" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="Real_Name" jdbcType="VARCHAR" property="realName" />
+    <result column="Nick_Name" jdbcType="VARCHAR" property="nickName" />
+    <result column="Sex" jdbcType="BIT" property="sex" />
+    <result column="Avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="Points" jdbcType="BIGINT" property="points" />
+    <result column="Member_Card_No" jdbcType="VARCHAR" property="memberCardNo" />
+    <result column="User_Level" jdbcType="VARCHAR" property="userLevel" />
+    <result column="Is_Newer" jdbcType="BIT" property="isNewer" />
+    <result column="Del_Flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    User_Id, User_Name, Open_ID, Password, Real_Name, Nick_Name, Sex, Avatar, Points, 
+    Member_Card_No, User_Level, Is_Newer, Del_Flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_test
+    where User_Id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_test
+    where User_Id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.UserTest">
+    insert into user_test (User_Id, User_Name, Open_ID, 
+      Password, Real_Name, Nick_Name, 
+      Sex, Avatar, Points, Member_Card_No, 
+      User_Level, Is_Newer, Del_Flag
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{avatar,jdbcType=VARCHAR}, #{points,jdbcType=BIGINT}, #{memberCardNo,jdbcType=VARCHAR}, 
+      #{userLevel,jdbcType=VARCHAR}, #{isNewer,jdbcType=BIT}, #{delFlag,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.UserTest">
+    insert into user_test
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        User_Id,
+      </if>
+      <if test="userName != null">
+        User_Name,
+      </if>
+      <if test="openId != null">
+        Open_ID,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="realName != null">
+        Real_Name,
+      </if>
+      <if test="nickName != null">
+        Nick_Name,
+      </if>
+      <if test="sex != null">
+        Sex,
+      </if>
+      <if test="avatar != null">
+        Avatar,
+      </if>
+      <if test="points != null">
+        Points,
+      </if>
+      <if test="memberCardNo != null">
+        Member_Card_No,
+      </if>
+      <if test="userLevel != null">
+        User_Level,
+      </if>
+      <if test="isNewer != null">
+        Is_Newer,
+      </if>
+      <if test="delFlag != null">
+        Del_Flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="points != null">
+        #{points,jdbcType=BIGINT},
+      </if>
+      <if test="memberCardNo != null">
+        #{memberCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null">
+        #{userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="isNewer != null">
+        #{isNewer,jdbcType=BIT},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.entity.UserTest">
+    update user_test
+    <set>
+      <if test="userName != null">
+        User_Name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        Open_ID = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        Real_Name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        Nick_Name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        Sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="avatar != null">
+        Avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="points != null">
+        Points = #{points,jdbcType=BIGINT},
+      </if>
+      <if test="memberCardNo != null">
+        Member_Card_No = #{memberCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null">
+        User_Level = #{userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="isNewer != null">
+        Is_Newer = #{isNewer,jdbcType=BIT},
+      </if>
+      <if test="delFlag != null">
+        Del_Flag = #{delFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where User_Id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.UserTest">
+    update user_test
+    set User_Name = #{userName,jdbcType=VARCHAR},
+      Open_ID = #{openId,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      Real_Name = #{realName,jdbcType=VARCHAR},
+      Nick_Name = #{nickName,jdbcType=VARCHAR},
+      Sex = #{sex,jdbcType=BIT},
+      Avatar = #{avatar,jdbcType=VARCHAR},
+      Points = #{points,jdbcType=BIGINT},
+      Member_Card_No = #{memberCardNo,jdbcType=VARCHAR},
+      User_Level = #{userLevel,jdbcType=VARCHAR},
+      Is_Newer = #{isNewer,jdbcType=BIT},
+      Del_Flag = #{delFlag,jdbcType=BIT}
+    where User_Id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

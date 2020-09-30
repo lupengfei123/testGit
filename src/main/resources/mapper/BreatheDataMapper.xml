@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.BreatheDataMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.BreatheData">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="person_code" jdbcType="VARCHAR" property="personCode" />
+    <result column="code_version" jdbcType="VARCHAR" property="codeVersion" />
+    <result column="device_no" jdbcType="VARCHAR" property="deviceNo" />
+    <result column="sale_channel" jdbcType="VARCHAR" property="saleChannel" />
+    <result column="detected_time" jdbcType="VARCHAR" property="detectedTime" />
+    <result column="pef_value" jdbcType="INTEGER" property="pefValue" />
+    <result column="fev1_value" jdbcType="DOUBLE" property="fev1Value" />
+    <result column="fvc_value" jdbcType="DOUBLE" property="fvcValue" />
+    <result column="fef25_75_value" jdbcType="DOUBLE" property="fef2575Value" />
+    <result column="mef75_value" jdbcType="DOUBLE" property="mef75Value" />
+    <result column="mef50_value" jdbcType="DOUBLE" property="mef50Value" />
+    <result column="mef25_value" jdbcType="DOUBLE" property="mef25Value" />
+    <result column="tips" jdbcType="VARCHAR" property="tips" />
+    <result column="param1" jdbcType="VARCHAR" property="param1" />
+    <result column="param2" jdbcType="VARCHAR" property="param2" />
+    <result column="param3" jdbcType="VARCHAR" property="param3" />
+    <result column="param4" jdbcType="VARCHAR" property="param4" />
+    <result column="prefef25_75_value" jdbcType="DOUBLE" property="prefef2575Value" />
+    <result column="premef75_value" jdbcType="DOUBLE" property="premef75Value" />
+    <result column="premef50_value" jdbcType="DOUBLE" property="premef50Value" />
+    <result column="premef25_value" jdbcType="DOUBLE" property="premef25Value" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.entity.BreatheData">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into breathe_data (person_code, code_version, device_no, 
+      sale_channel, detected_time, pef_value, 
+      fev1_value, fvc_value, fef25_75_value, 
+      mef75_value, mef50_value, mef25_value, 
+      tips, param1, param2, 
+      param3, param4, prefef25_75_value, 
+      premef75_value, premef50_value, premef25_value, 
+      create_time)
+    values (#{personCode,jdbcType=VARCHAR}, #{codeVersion,jdbcType=VARCHAR}, #{deviceNo,jdbcType=VARCHAR}, 
+      #{saleChannel,jdbcType=VARCHAR}, #{detectedTime,jdbcType=VARCHAR}, #{pefValue,jdbcType=INTEGER}, 
+      #{fev1Value,jdbcType=DOUBLE}, #{fvcValue,jdbcType=DOUBLE}, #{fef2575Value,jdbcType=DOUBLE}, 
+      #{mef75Value,jdbcType=DOUBLE}, #{mef50Value,jdbcType=DOUBLE}, #{mef25Value,jdbcType=DOUBLE}, 
+      #{tips,jdbcType=VARCHAR}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
+      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{prefef2575Value,jdbcType=DOUBLE}, 
+      #{premef75Value,jdbcType=DOUBLE}, #{premef50Value,jdbcType=DOUBLE}, #{premef25Value,jdbcType=DOUBLE}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.entity.BreatheData">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into breathe_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personCode != null">
+        person_code,
+      </if>
+      <if test="codeVersion != null">
+        code_version,
+      </if>
+      <if test="deviceNo != null">
+        device_no,
+      </if>
+      <if test="saleChannel != null">
+        sale_channel,
+      </if>
+      <if test="detectedTime != null">
+        detected_time,
+      </if>
+      <if test="pefValue != null">
+        pef_value,
+      </if>
+      <if test="fev1Value != null">
+        fev1_value,
+      </if>
+      <if test="fvcValue != null">
+        fvc_value,
+      </if>
+      <if test="fef2575Value != null">
+        fef25_75_value,
+      </if>
+      <if test="mef75Value != null">
+        mef75_value,
+      </if>
+      <if test="mef50Value != null">
+        mef50_value,
+      </if>
+      <if test="mef25Value != null">
+        mef25_value,
+      </if>
+      <if test="tips != null">
+        tips,
+      </if>
+      <if test="param1 != null">
+        param1,
+      </if>
+      <if test="param2 != null">
+        param2,
+      </if>
+      <if test="param3 != null">
+        param3,
+      </if>
+      <if test="param4 != null">
+        param4,
+      </if>
+      <if test="prefef2575Value != null">
+        prefef25_75_value,
+      </if>
+      <if test="premef75Value != null">
+        premef75_value,
+      </if>
+      <if test="premef50Value != null">
+        premef50_value,
+      </if>
+      <if test="premef25Value != null">
+        premef25_value,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="personCode != null">
+        #{personCode,jdbcType=VARCHAR},
+      </if>
+      <if test="codeVersion != null">
+        #{codeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceNo != null">
+        #{deviceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="saleChannel != null">
+        #{saleChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="detectedTime != null">
+        #{detectedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="pefValue != null">
+        #{pefValue,jdbcType=INTEGER},
+      </if>
+      <if test="fev1Value != null">
+        #{fev1Value,jdbcType=DOUBLE},
+      </if>
+      <if test="fvcValue != null">
+        #{fvcValue,jdbcType=DOUBLE},
+      </if>
+      <if test="fef2575Value != null">
+        #{fef2575Value,jdbcType=DOUBLE},
+      </if>
+      <if test="mef75Value != null">
+        #{mef75Value,jdbcType=DOUBLE},
+      </if>
+      <if test="mef50Value != null">
+        #{mef50Value,jdbcType=DOUBLE},
+      </if>
+      <if test="mef25Value != null">
+        #{mef25Value,jdbcType=DOUBLE},
+      </if>
+      <if test="tips != null">
+        #{tips,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null">
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null">
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null">
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null">
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="prefef2575Value != null">
+        #{prefef2575Value,jdbcType=DOUBLE},
+      </if>
+      <if test="premef75Value != null">
+        #{premef75Value,jdbcType=DOUBLE},
+      </if>
+      <if test="premef50Value != null">
+        #{premef50Value,jdbcType=DOUBLE},
+      </if>
+      <if test="premef25Value != null">
+        #{premef25Value,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

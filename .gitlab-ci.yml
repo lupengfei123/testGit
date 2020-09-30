@@ -1,0 +1,48 @@
+stages:
+    - test
+    - build_publish
+
+build_publish_daily:
+    stage: build_publish
+    only:
+        refs:
+            - develop
+        variables:
+            - $PROFILE == "publish"
+    except:
+        - pushes
+        - merge_requests
+        - tags
+    script:
+        - publish-gitlab
+    tags:
+        - mvn
+
+build_publish_test:
+    stage: build_publish
+    only:
+        refs:
+            - release
+            - triggers
+        variables:
+            - $PROFILE == "publish"
+    except:
+        - pushes
+        - merge_requests
+        - tags
+    script:
+        - publish-gitlab
+    tags:
+        - mvn
+
+test:
+    stage: test
+    only:
+        refs:
+            - develop
+    except:
+        - triggers
+    script:
+        - mvn compile -Dmaven.test.skip=true
+    tags:
+        - mvn
