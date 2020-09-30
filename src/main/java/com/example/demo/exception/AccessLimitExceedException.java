@@ -6,7 +6,7 @@ import com.example.demo.consts.ResultPacketCode;
 /**
 * @Description: 接口限流异常
 */
-public class AccessLimitExceedException extends RuntimeException {
+public class  AccessLimitExceedException extends RuntimeException {
 
     private Integer code;
 
