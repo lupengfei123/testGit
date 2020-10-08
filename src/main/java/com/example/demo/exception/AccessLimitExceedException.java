@@ -8,7 +8,7 @@ import com.example.demo.consts.ResultPacketCode;
 */
 public class  AccessLimitExceedException extends RuntimeException {
 
-    private Integer code;
+    private Integer  code;
 
     public AccessLimitExceedException(){
         super();
