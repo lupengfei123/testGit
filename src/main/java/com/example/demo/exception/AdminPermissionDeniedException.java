@@ -10,7 +10,7 @@ public class AdminPermissionDeniedException extends CustomException {
 	public AdminPermissionDeniedException() {
 	}
 
-	public AdminPermissionDeniedException(String message) {
+	public  AdminPermissionDeniedException(String message) {
 		super( ResultPacketCode.APIResultCode.AuthFail.getCode(), message);
 	}
 }
