@@ -4,7 +4,7 @@ package com.example.demo.exception;
 import com.example.demo.consts.ResultPacketCode;
 
 /**
-* @Description: 接口限流异常
+* @Description: 接口限流异常 测试
 */
 public class  AccessLimitExceedException extends RuntimeException {
 
