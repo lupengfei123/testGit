@@ -10,7 +10,7 @@ import tk.mybatis.mapper.util.StringUtil;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *          类说明
+ *  类说明 异常
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
