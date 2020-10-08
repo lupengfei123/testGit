@@ -11,6 +11,6 @@ public class AdminPermissionDeniedException extends CustomException {
 	}
 
 	public AdminPermissionDeniedException(String message) {
-		super(ResultPacketCode.APIResultCode.AuthFail.getCode(), message);
+		super( ResultPacketCode.APIResultCode.AuthFail.getCode(), message);
 	}
 }
