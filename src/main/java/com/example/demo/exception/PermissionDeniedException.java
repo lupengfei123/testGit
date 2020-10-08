@@ -8,7 +8,7 @@ import com.example.demo.consts.ResultPacketCode;
  */
 public class PermissionDeniedException extends CustomException {
 
-	public PermissionDeniedException() {
+	public  PermissionDeniedException() {
 	}
 
 	public PermissionDeniedException(String message) {
