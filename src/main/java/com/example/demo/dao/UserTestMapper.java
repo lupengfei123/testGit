@@ -2,6 +2,8 @@ package com.example.demo.dao;
 
 import com.example.demo.entity.UserTest;
 
+import java.util.List;
+
 public interface UserTestMapper {
     int deleteByPrimaryKey(String userId);
 
@@ -14,4 +16,6 @@ public interface UserTestMapper {
     int updateByPrimaryKeySelective(UserTest record);
 
     int updateByPrimaryKey(UserTest record);
+
+    List<UserTest> getList ();
 }

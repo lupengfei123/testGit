@@ -26,6 +26,9 @@
     from user_test
     where User_Id = #{userId,jdbcType=VARCHAR}
   </select>
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user_test
     where User_Id = #{userId,jdbcType=VARCHAR}
@@ -185,4 +188,10 @@
       Del_Flag = #{delFlag,jdbcType=BIT}
     where User_Id = #{userId,jdbcType=VARCHAR}
   </update>
+
+  <select id="getList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_test
+  </select>
 </mapper>
