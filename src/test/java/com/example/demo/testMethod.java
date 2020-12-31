@@ -2,11 +2,14 @@ package com.example.demo;
 
 import com.example.demo.bean.FanoutMessage;
 import com.example.demo.consts.ConstantUtil;
+import com.example.demo.entity.Student;
 import com.example.demo.rabbitmq.config.RabbitConfig;
 import com.example.demo.rabbitmq.config.RabbitUtil;
 import org.junit.Test;
 
 import javax.annotation.Resource;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class testMethod extends DemoSpringBootApplicationTests {
     @Resource
@@ -58,5 +61,20 @@ public class testMethod extends DemoSpringBootApplicationTests {
             i++;
         }
         Thread.sleep(1000000);
+    }
+
+    @Test
+    public void tesTStream(){
+
+    List <Student> list =new ArrayList<>();
+        list.add(new Student(1, "Mahesh", 12));
+        list.add(new Student(2, "Suresh", 15));
+        list.add(new Student(3, "Nilesh", 10));
+
+        list.stream().sorted(Comparator.comparing(Student::getAge).reversed()).forEach(e->System.out.println("Id:"+ e.getId()+", Name: "+e.getName()+", Age:"+e.getAge()));
+
+
+
+
     }
 }
